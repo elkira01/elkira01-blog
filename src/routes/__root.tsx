@@ -5,14 +5,14 @@ import {
 } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
-import Footer from '../components/Footer'
-import Header from '../components/Header'
+import Footer from '../widgets/footer/ui/Footer'
+import Header from '../widgets/header/ui/Header'
 
-import StoreDevtools from '../lib/demo-store-devtools'
+import StoreDevtools from '../app/devtools/store-devtools'
 
-import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
+import TanStackQueryDevtools from '../app/devtools/query-devtools'
 
-import appCss from '../styles.css?url'
+import appCss from '../app/styles.css?url'
 
 import type { QueryClient } from '@tanstack/react-query'
 
