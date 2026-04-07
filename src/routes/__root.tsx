@@ -5,16 +5,15 @@ import {
 } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
-import Footer from '../widgets/footer/ui/Footer'
-import Header from '../widgets/header/ui/Header'
 
-import StoreDevtools from '../app/devtools/store-devtools'
+// import StoreDevtools from '../app/devtools/store-devtools'
 
 import TanStackQueryDevtools from '../app/devtools/query-devtools'
 
 import appCss from '../app/styles.css?url'
 
 import type { QueryClient } from '@tanstack/react-query'
+import { AppLayout } from '#/widgets/layout/AppLayout'
 
 interface MyRouterContext {
   queryClient: QueryClient
@@ -54,9 +53,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body className="font-sans antialiased [overflow-wrap:anywhere] selection:bg-[rgba(79,184,178,0.24)]">
-        <Header />
-        {children}
-        <Footer />
+        <AppLayout>
+          {children}
+        </AppLayout>
         <TanStackDevtools
           config={{
             position: 'bottom-right',
@@ -66,7 +65,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
               name: 'Tanstack Router',
               render: <TanStackRouterDevtoolsPanel />,
             },
-            StoreDevtools,
+            // StoreDevtools,
             TanStackQueryDevtools,
           ]}
         />
