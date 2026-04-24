@@ -1,3 +1,4 @@
+import  React from "react";
 import {
   HeadContent,
   Scripts,
@@ -6,11 +7,9 @@ import {
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 
-// import StoreDevtools from '../app/devtools/store-devtools'
+import TanStackQueryDevtools from '../devtools/query-devtools'
 
-import TanStackQueryDevtools from '../app/devtools/query-devtools'
-
-import appCss from '../app/styles.css?url'
+import appCss from '../styles/styles.css'
 
 import type { QueryClient } from '@tanstack/react-query'
 import { AppLayout } from '#/widgets/layout/AppLayout'
@@ -38,7 +37,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
     links: [
       {
         rel: 'stylesheet',
-        href: appCss,
+        href: appCss as any,
       },
     ],
   }),
