@@ -15,7 +15,7 @@ export const Route = createFileRoute('/posts/$postId/edit')({
   },
   component: function PostEditRoute() {
     const { post } = Route.useLoaderData();
-    if (!post) return <div className="p-8 text-center text-[var(--sea-ink-soft)]">Post not found</div>;
+    if (!post) return <div className="p-8 text-center text-[var(--engineer-muted)] engineer-workspace">Post not found</div>;
     return <PostEditorPage post={post} />;
   },
 })
