@@ -10,7 +10,7 @@ import { TanStackDevtools } from '@tanstack/react-devtools'
 
 import TanStackQueryDevtools from '../devtools/query-devtools'
 
-import appCss from '../styles/styles.css'
+import appCss from '../styles/styles.css?url'
 
 import type { QueryClient } from '@tanstack/react-query'
 import { AppLayout } from '@/widgets/layout/AppLayout'

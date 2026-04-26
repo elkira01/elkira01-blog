@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Intellectual Engineer - Editor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "on-surface": "#1b1b1d",
+                        "surface-container": "#f0edef",
+                        "primary-container": "#131b2e",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#98805d",
+                        "tertiary-container": "#271901",
+                        "surface-container-highest": "#e4e2e4",
+                        "surface-container-low": "#f6f3f5",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "surface": "#fcf8fa",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#565e74",
+                        "on-primary-container": "#7c839b",
+                        "background": "#fcf8fa",
+                        "on-primary-fixed": "#131b2e",
+                        "on-primary": "#ffffff",
+                        "primary": "#000000",
+                        "on-surface-variant": "#45464d",
+                        "surface-bright": "#fcf8fa",
+                        "secondary-fixed-dim": "#ffb59d",
+                        "secondary": "#ac3400",
+                        "secondary-fixed": "#ffdbd0",
+                        "on-background": "#1b1b1d",
+                        "surface-container-high": "#eae7e9",
+                        "inverse-on-surface": "#f3f0f2",
+                        "on-secondary-fixed": "#390c00",
+                        "on-tertiary-fixed": "#271901",
+                        "secondary-container": "#fd6b36",
+                        "surface-dim": "#dcd9db",
+                        "outline": "#76777d",
+                        "tertiary-fixed": "#fcdeb5",
+                        "on-secondary-container": "#5d1900",
+                        "surface-variant": "#e4e2e4",
+                        "outline-variant": "#c6c6cd",
+                        "primary-fixed-dim": "#bec6e0",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "inverse-primary": "#bec6e0",
+                        "primary-fixed": "#dae2fd",
+                        "inverse-surface": "#303032",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-secondary-fixed-variant": "#832600",
+                        "tertiary": "#000000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "24px",
+                        "max-width": "1280px",
+                        "unit": "4px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Newsreader"],
+                        "h1": ["Newsreader"],
+                        "h3": ["Newsreader"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "ui-label": ["Inter"],
+                        "caption": ["Inter"],
+                        "display": ["Newsreader"]
+                    },
+                    "fontSize": {
+                        "h2": ["32px", { "lineHeight": "1.3", "fontWeight": "400" }],
+                        "h1": ["48px", { "lineHeight": "1.2", "fontWeight": "400" }],
+                        "h3": ["24px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.7", "fontWeight": "400" }],
+                        "ui-label": ["14px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "caption": ["13px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "display": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .grid-bg {
+            background-image: radial-gradient(var(--tw-colors-outline-variant) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .hairline-border {
+            border: 1px solid var(--tw-colors-outline-variant);
+        }
+        .hairline-border-b {
+            border-bottom: 1px solid var(--tw-colors-outline-variant);
+        }
+        .hairline-border-r {
+            border-right: 1px solid var(--tw-colors-outline-variant);
+        }
+        .hairline-border-l {
+            border-left: 1px solid var(--tw-colors-outline-variant);
+        }
+        .hairline-border-t {
+            border-top: 1px solid var(--tw-colors-outline-variant);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-hidden">
+<!-- Top Navigation (Editor context, simplified) -->
+<header class="bg-surface border-b border-outline-variant flex justify-between items-center w-full px-6 py-4 max-w-screen-2xl mx-auto h-[72px] shrink-0">
+<div class="flex items-center gap-4">
+<a class="font-display font-bold tracking-tighter text-primary text-2xl" href="#">THE ENGINEER</a>
+<span class="text-outline mx-2">/</span>
+<span class="font-ui-label text-ui-label text-on-surface-variant uppercase tracking-widest">Drafting</span>
+</div>
+<div class="flex items-center gap-6">
+<span class="font-caption text-caption text-outline">Last saved: 2 mins ago</span>
+<div class="flex gap-2">
+<button class="px-4 py-2 border border-primary text-primary font-ui-label text-ui-label uppercase hover:bg-surface-variant transition-colors">
+                    Save Draft
+                </button>
+<button class="px-4 py-2 bg-primary text-on-primary font-ui-label text-ui-label uppercase hover:opacity-90 transition-opacity">
+                    Publish
+                </button>
+</div>
+<button class="text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Workspace -->
+<main class="flex-1 flex overflow-hidden w-full max-w-screen-2xl mx-auto border-x border-outline-variant">
+<!-- Editor Sidebar (Formatting/Metadata) -->
+<aside class="w-16 md:w-64 border-r border-outline-variant bg-surface-container-low flex flex-col shrink-0 transition-all duration-300">
+<!-- Mobile/Compact Tools -->
+<div class="md:hidden flex flex-col items-center py-4 gap-6">
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined">format_h1</span></button>
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined">format_h2</span></button>
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined">format_quote</span></button>
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined">code</span></button>
+<div class="w-8 h-px bg-outline-variant my-2"></div>
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined">image</span></button>
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined">link</span></button>
+</div>
+<!-- Full Sidebar -->
+<div class="hidden md:flex flex-col h-full overflow-y-auto">
+<div class="p-6 border-b border-outline-variant">
+<h3 class="font-ui-label text-ui-label uppercase text-on-surface-variant mb-4 tracking-widest">Formatting</h3>
+<div class="grid grid-cols-4 gap-2">
+<button class="p-2 border border-outline-variant bg-surface hover:bg-surface-variant text-on-surface flex items-center justify-center transition-colors" title="Heading 1"><span class="material-symbols-outlined text-sm">format_h1</span></button>
+<button class="p-2 border border-outline-variant bg-surface hover:bg-surface-variant text-on-surface flex items-center justify-center transition-colors" title="Heading 2"><span class="material-symbols-outlined text-sm">format_h2</span></button>
+<button class="p-2 border border-outline-variant bg-surface hover:bg-surface-variant text-on-surface flex items-center justify-center transition-colors" title="Bold"><span class="material-symbols-outlined text-sm">format_bold</span></button>
+<button class="p-2 border border-outline-variant bg-surface hover:bg-surface-variant text-on-surface flex items-center justify-center transition-colors" title="Italic"><span class="material-symbols-outlined text-sm">format_italic</span></button>
+<button class="p-2 border border-outline-variant bg-surface hover:bg-surface-variant text-on-surface flex items-center justify-center transition-colors" title="Quote"><span class="material-symbols-outlined text-sm">format_quote</span></button>
+<button class="p-2 border border-outline-variant bg-surface hover:bg-surface-variant text-on-surface flex items-center justify-center transition-colors" title="Code Block"><span class="material-symbols-outlined text-sm">code_blocks</span></button>
+<button class="p-2 border border-outline-variant bg-surface hover:bg-surface-variant text-on-surface flex items-center justify-center transition-colors" title="List"><span class="material-symbols-outlined text-sm">format_list_bulleted</span></button>
+<button class="p-2 border border-outline-variant bg-surface hover:bg-surface-variant text-on-surface flex items-center justify-center transition-colors" title="Link"><span class="material-symbols-outlined text-sm">link</span></button>
+</div>
+</div>
+<div class="p-6 border-b border-outline-variant">
+<h3 class="font-ui-label text-ui-label uppercase text-on-surface-variant mb-4 tracking-widest">Metadata</h3>
+<div class="space-y-4">
+<div>
+<label class="font-ui-label text-ui-label text-on-surface block mb-1">Tags</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary px-0 py-2 font-body-md text-body-md text-on-surface placeholder:text-outline" placeholder="architecture, systems..." type="text"/>
+</div>
+<div>
+<label class="font-ui-label text-ui-label text-on-surface block mb-1">Slug</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary px-0 py-2 font-body-md text-body-md text-on-surface placeholder:text-outline" placeholder="the-mechanics-of-thought" type="text"/>
+</div>
+</div>
+</div>
+<div class="p-6 mt-auto">
+<div class="bg-surface p-4 border border-outline-variant border-l-4 border-l-secondary-container">
+<span class="material-symbols-outlined text-secondary-container mb-2 block">lightbulb</span>
+<p class="font-caption text-caption text-on-surface-variant">Keep paragraphs concise. Engineering broadsheets value clarity over verbosity.</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Split View: Editor & Preview -->
+<div class="flex-1 flex flex-col lg:flex-row overflow-hidden relative">
+<!-- Writing Area -->
+<section class="flex-1 flex flex-col bg-surface relative overflow-y-auto border-r border-outline-variant">
+<div class="p-8 md:p-12 lg:p-16 max-w-3xl mx-auto w-full">
+<input class="w-full bg-transparent border-none focus:ring-0 px-0 py-2 font-h1 text-h1 text-primary placeholder:text-outline-variant mb-6" placeholder="Title..." type="text" value="The Architecture of Minimalist Code"/>
+<input class="w-full bg-transparent border-none focus:ring-0 px-0 py-2 font-h3 text-h3 text-on-surface-variant placeholder:text-outline-variant mb-12 italic" placeholder="Subtitle or excerpt..." type="text" value="Why less abstraction often leads to more resilient systems."/>
+<div class="font-body-lg text-body-lg text-on-surface leading-relaxed space-y-6 outline-none" contenteditable="true">
+<p>In modern software engineering, there is a pervasive tendency to build abstractions upon abstractions. We construct elaborate frameworks to shield ourselves from the underlying mechanics of the systems we operate on.</p>
+<p>However, true elegance in code is not found in how many layers you can stack, but in how few you actually need. A minimalist approach to architecture requires a deep understanding of the fundamentals.</p>
+<h2 class="font-h2 text-h2 text-primary mt-12 mb-4">The Cost of Obfuscation</h2>
+<p>Every abstraction layer introduces a cognitive tax. When a system fails, debugging becomes an archeological dig through layers of indirection.</p>
+</div>
+</div>
+</section>
+<!-- Live Preview -->
+<section class="hidden lg:flex flex-1 flex-col bg-surface-container-lowest overflow-y-auto grid-bg">
+<div class="sticky top-0 bg-surface-container-lowest/90 backdrop-blur-sm border-b border-outline-variant px-6 py-3 flex justify-between items-center z-10">
+<span class="font-ui-label text-ui-label uppercase text-on-surface-variant tracking-widest">Live Preview</span>
+<div class="flex gap-2">
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-sm">desktop_windows</span></button>
+<button class="text-outline hover:text-primary"><span class="material-symbols-outlined text-sm">smartphone</span></button>
+</div>
+</div>
+<div class="p-8 md:p-12 lg:p-16 max-w-3xl mx-auto w-full bg-surface shadow-sm my-8 border border-outline-variant">
+<header class="mb-12 border-b border-outline-variant pb-8">
+<div class="flex items-center gap-4 mb-6">
+<span class="font-ui-label text-ui-label uppercase text-secondary tracking-widest">Technical Essay</span>
+<span class="text-outline-variant">•</span>
+<span class="font-caption text-caption text-on-surface-variant">Oct 24, 2024</span>
+</div>
+<h1 class="font-h1 text-h1 text-primary mb-4">The Architecture of Minimalist Code</h1>
+<p class="font-h3 text-h3 text-on-surface-variant italic">Why less abstraction often leads to more resilient systems.</p>
+</header>
+<article class="prose prose-slate max-w-none font-body-lg text-body-lg text-on-surface leading-relaxed space-y-6">
+<p>In modern software engineering, there is a pervasive tendency to build abstractions upon abstractions. We construct elaborate frameworks to shield ourselves from the underlying mechanics of the systems we operate on.</p>
+<p>However, true elegance in code is not found in how many layers you can stack, but in how few you actually need. A minimalist approach to architecture requires a deep understanding of the fundamentals.</p>
+<h2 class="font-h2 text-h2 text-primary mt-12 mb-6">The Cost of Obfuscation</h2>
+<p>Every abstraction layer introduces a cognitive tax. When a system fails, debugging becomes an archeological dig through layers of indirection.</p>
+</article>
+</div>
+</section>
+</div>
+</main>
+</body></html>

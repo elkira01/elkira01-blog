@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Engineer - Clarity through constraints</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "on-surface": "#1b1b1d",
+                        "surface-container": "#f0edef",
+                        "primary-container": "#131b2e",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#98805d",
+                        "tertiary-container": "#271901",
+                        "surface-container-highest": "#e4e2e4",
+                        "surface-container-low": "#f6f3f5",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "surface": "#fcf8fa",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#565e74",
+                        "on-primary-container": "#7c839b",
+                        "background": "#fcf8fa",
+                        "on-primary-fixed": "#131b2e",
+                        "on-primary": "#ffffff",
+                        "primary": "#000000",
+                        "on-surface-variant": "#45464d",
+                        "surface-bright": "#fcf8fa",
+                        "secondary-fixed-dim": "#ffb59d",
+                        "secondary": "#ac3400",
+                        "secondary-fixed": "#ffdbd0",
+                        "on-background": "#1b1b1d",
+                        "surface-container-high": "#eae7e9",
+                        "inverse-on-surface": "#f3f0f2",
+                        "on-secondary-fixed": "#390c00",
+                        "on-tertiary-fixed": "#271901",
+                        "secondary-container": "#fd6b36",
+                        "surface-dim": "#dcd9db",
+                        "outline": "#76777d",
+                        "tertiary-fixed": "#fcdeb5",
+                        "on-secondary-container": "#5d1900",
+                        "surface-variant": "#e4e2e4",
+                        "outline-variant": "#c6c6cd",
+                        "primary-fixed-dim": "#bec6e0",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "inverse-primary": "#bec6e0",
+                        "primary-fixed": "#dae2fd",
+                        "inverse-surface": "#303032",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-secondary-fixed-variant": "#832600",
+                        "tertiary": "#000000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "24px",
+                        "max-width": "1280px",
+                        "unit": "4px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Newsreader"],
+                        "h1": ["Newsreader"],
+                        "h3": ["Newsreader"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "ui-label": ["Inter"],
+                        "caption": ["Inter"],
+                        "display": ["Newsreader"]
+                    },
+                    "fontSize": {
+                        "h2": ["32px", { "lineHeight": "1.3", "fontWeight": "400" }],
+                        "h1": ["48px", { "lineHeight": "1.2", "fontWeight": "400" }],
+                        "h3": ["24px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.7", "fontWeight": "400" }],
+                        "ui-label": ["14px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "caption": ["13px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "display": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .grid-pattern {
+            background-image: radial-gradient(circle at 1px 1px, #e2e8f0 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-white dark:bg-slate-950 font-serif font-medium tracking-tight w-full top-0 border-b border-slate-200 dark:border-slate-800 z-50 relative">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-screen-2xl mx-auto">
+<a class="font-serif text-2xl font-bold tracking-tighter text-slate-900 dark:text-slate-50" href="#">
+                THE ENGINEER
+            </a>
+<div class="hidden md:flex items-center gap-8">
+<!-- Highlighted "Archive" as default active for this general view, or leave inactive. Let's make "Essays" active as it's a home page featuring articles -->
+<a class="text-slate-900 dark:text-slate-50 border-b border-slate-900 dark:border-slate-50 pb-1 hover:text-slate-900 dark:hover:text-slate-50 transition-colors duration-200 opacity-70 transition-opacity" href="#">Essays</a>
+<a class="text-slate-500 dark:text-slate-400 pb-1 hover:text-slate-900 dark:hover:text-slate-50 transition-colors duration-200" href="#">Technical</a>
+<a class="text-slate-500 dark:text-slate-400 pb-1 hover:text-slate-900 dark:hover:text-slate-50 transition-colors duration-200" href="#">Archive</a>
+<a class="text-slate-500 dark:text-slate-400 pb-1 hover:text-slate-900 dark:hover:text-slate-50 transition-colors duration-200" href="#">Manifesto</a>
+</div>
+<div class="flex items-center gap-4">
+<button aria-label="Search" class="text-slate-900 dark:text-slate-50 hover:text-slate-900 dark:hover:text-slate-50 transition-colors duration-200">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button aria-label="Menu" class="md:hidden text-slate-900 dark:text-slate-50 hover:text-slate-900 dark:hover:text-slate-50 transition-colors duration-200">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop py-12 gap-16 grid-pattern">
+<!-- Hero Section -->
+<section class="border-b border-outline-variant pb-12">
+<h1 class="font-display text-display text-primary max-w-4xl mb-6">
+                Clarity through constraints.
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                A rigorous examination of software architecture, minimal design principles, and the philosophy of building enduring systems.
+            </p>
+</section>
+<!-- Editorial Grid Layout -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Left Column: Featured Essay (Takes up 8 columns on md) -->
+<div class="col-span-1 md:col-span-8 flex flex-col border border-outline-variant p-6 bg-surface-lowest relative">
+<!-- Technical Corner Accent -->
+<div class="absolute top-0 left-0 w-4 h-4 border-t border-l border-primary -mt-[1px] -ml-[1px]"></div>
+<span class="font-ui-label text-ui-label text-secondary uppercase mb-4 tracking-widest">Featured Essay</span>
+<img alt="Abstract architectural lines showing strict grid constraints and minimalist perspective" class="w-full h-80 object-cover mb-6 border border-outline-variant grayscale" data-alt="Abstract black and white architectural photography showing brutalist concrete lines and strict geometric constraints with strong shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCydhlQGmi07n5rkSHGDQgmbS1nWA2Ke9dwagkx2BlmQogNs9TzCxC703wF6zjjOnhjsiSGXjt4DDzD2L-hdNoOKodwhu4k8_OWNM1H_unj2gNlCejxxJrMK96NRFBlPlXshwLyntMByfGbmYGgDY6pq-W3Z8gf29OSDKt2Ow1MSucIkSJiCP_OL2J1lbHk1VxoIoEn3zv8wMqGCvqVz0MCyO0I50tfj42MlLyyRui-6M3P4HCULJ_-Er33eirD2F7n-jXovHU0oO4"/>
+<h2 class="font-h2 text-h2 text-primary mb-3">The Architecture of Nothing</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">
+                    Why the absence of features often defines the most robust systems. Exploring the reductionist approach to scalable infrastructure and how to advocate for 'less' in a feature-obsessed culture.
+                </p>
+<div class="flex items-center justify-between border-t border-outline-variant pt-4 mt-auto">
+<span class="font-caption text-caption text-on-surface-variant">By A. H. Miller</span>
+<button class="font-ui-label text-ui-label text-primary hover:underline uppercase flex items-center gap-1">
+                        Read <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Right Column: Secondary Articles & Editor Note (Takes up 4 columns on md) -->
+<div class="col-span-1 md:col-span-4 flex flex-col gap-gutter">
+<!-- Secondary Article 1 -->
+<article class="border border-outline-variant p-5 bg-surface-lowest">
+<span class="font-caption text-caption text-secondary uppercase block mb-2">Technical</span>
+<h3 class="font-h3 text-h3 text-primary mb-2">State Machines in UI</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mb-4">
+                        Predictable interfaces require strict state management.
+                    </p>
+<a class="font-ui-label text-ui-label text-primary hover:underline uppercase" href="#">Read</a>
+</article>
+<!-- Secondary Article 2 -->
+<article class="border border-outline-variant p-5 bg-surface-lowest">
+<span class="font-caption text-caption text-secondary uppercase block mb-2">Systems</span>
+<h3 class="font-h3 text-h3 text-primary mb-2">Decoupling Data</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mb-4">
+                        When microservices become a distributed monolith.
+                    </p>
+<a class="font-ui-label text-ui-label text-primary hover:underline uppercase" href="#">Read</a>
+</article>
+<!-- Technical Callout / Editor Note -->
+<div class="bg-surface-container-low p-6 border-l-4 border-secondary mt-auto">
+<h3 class="font-ui-label text-ui-label text-primary uppercase mb-3">From the Editor</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm italic mb-4">
+                        "We are transitioning from an era of abundance to an era of refinement. The code we write today must be leaner, more legible, and fundamentally constrained."
+                    </p>
+<span class="font-caption text-caption text-primary font-bold">Vol. IV — Issue 12</span>
+</div>
+</div>
+</section>
+<!-- Technical Snippets Section -->
+<section class="border-t border-outline-variant pt-12 mb-12">
+<div class="flex justify-between items-end mb-8">
+<h2 class="font-h2 text-h2 text-primary">Recent Logs</h2>
+<a class="font-ui-label text-ui-label text-primary hover:underline uppercase flex items-center gap-1" href="#">
+                    View Archive <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-l border-outline-variant">
+<!-- Log Item 1 -->
+<div class="border-b border-r border-outline-variant p-6 hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-caption text-caption text-on-surface-variant block mb-2">04.12.24</span>
+<h3 class="font-h3 text-h3 text-primary mb-3 group-hover:text-secondary transition-colors">Typographic Scales</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3">
+                        Implementing strict modular scales in CSS to ensure vertical rhythm across responsive breakpoints without relying on magic numbers.
+                    </p>
+</div>
+<!-- Log Item 2 -->
+<div class="border-b border-r border-outline-variant p-6 hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-caption text-caption text-on-surface-variant block mb-2">04.05.24</span>
+<h3 class="font-h3 text-h3 text-primary mb-3 group-hover:text-secondary transition-colors">The 1px Boundary</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3">
+                        Why shadows dilute structure. Embracing hairline borders to define container hierarchy in dense data applications.
+                    </p>
+</div>
+<!-- Log Item 3 -->
+<div class="border-b border-r border-outline-variant p-6 hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-caption text-caption text-on-surface-variant block mb-2">03.28.24</span>
+<h3 class="font-h3 text-h3 text-primary mb-3 group-hover:text-secondary transition-colors">Rust in Production</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3">
+                        Notes from migrating a core Python service to Rust. Memory safety as a feature, compilation times as a constraint.
+                    </p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-slate-900 font-serif text-sm uppercase tracking-widest w-full border-t border-slate-200 dark:border-slate-800">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-8 py-12 max-w-screen-2xl mx-auto gap-4">
+<span class="text-slate-500 dark:text-slate-400">
+                © 2024 THE INTELLECTUAL ENGINEER. BUILT FOR PRECISION.
+            </span>
+<div class="flex gap-6">
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 underline decoration-1" href="#">Colophon</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 underline decoration-1" href="#">RSS Feed</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 underline decoration-1" href="#">Changelog</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 underline decoration-1" href="#">Privacy</a>
+</div>
+</div>
+</footer>
+</body></html>
