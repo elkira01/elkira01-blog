@@ -1,6 +1,12 @@
 import { Link } from '@tanstack/react-router'
 import ThemeToggle from '../../../shared/ui/ThemeToggle'
 
+const navItems = [
+  { to: '/', label: 'Essays' },
+  { to: '/about', label: 'About' },
+  { to: '/admin/posts/new', label: 'New Draft' },
+] as const
+
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--engineer-border)] bg-[var(--engineer-paper)] px-4 backdrop-blur-lg">
@@ -12,31 +18,17 @@ export default function Header() {
         </h1>
 
         <div className="hidden sm:flex items-center gap-6 text-sm">
-          <Link
-            to="/"
-            className="nav-link !text-[var(--engineer-muted)] hover:!text-[var(--engineer-ink)]"
-            activeProps={{ className: 'nav-link is-active !text-[var(--engineer-ink)] border-b border-[var(--engineer-ink)]' }}
-          >
-            Essays
-          </Link>
-          <Link
-            to="/"
-            className="nav-link !text-[var(--engineer-muted)] hover:!text-[var(--engineer-ink)]"
-          >
-            Technical
-          </Link>
-          <Link
-            to="/"
-            className="nav-link !text-[var(--engineer-muted)] hover:!text-[var(--engineer-ink)]"
-          >
-            Archive
-          </Link>
-          <Link
-            to="/"
-            className="nav-link !text-[var(--engineer-muted)] hover:!text-[var(--engineer-ink)]"
-          >
-            Manifesto
-          </Link>
+          {navItems.map((item) => (
+            <Link
+              key={item.label}
+              to={item.to}
+              activeOptions={{ exact: item.to === '/' }}
+              className="nav-link !text-[var(--engineer-muted)] hover:!text-[var(--engineer-ink)]"
+              activeProps={{ className: 'nav-link is-active !text-[var(--engineer-ink)] border-b border-[var(--engineer-ink)]' }}
+            >
+              {item.label}
+            </Link>
+          ))}
         </div>
 
         <div className="flex items-center gap-4">

@@ -96,7 +96,7 @@ export function PostEditorPage({ post }: PostEditorPageProps) {
 					});
 
 					setCurrentPostId(created.id);
-					window.history.replaceState(null, "", `/posts/${created.id}/edit`);
+					window.history.replaceState(null, "", `/admin/posts/${created.id}/edit`);
 				}
 
 				setSlug(safeSlug);
