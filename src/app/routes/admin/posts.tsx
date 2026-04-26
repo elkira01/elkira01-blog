@@ -1,6 +1,6 @@
 import { Outlet, createFileRoute, redirect } from '@tanstack/react-router'
 import { isAdminAuthenticated } from '@/features/auth'
-import { AdminLayout } from '@/widgets/layout/AdminLayout'
+import { AdminLayout } from '@/widgets/admin-layout/ui/AdminLayout.tsx'
 
 export const Route = createFileRoute('/admin/posts')({
   beforeLoad: ({ location }) => {
