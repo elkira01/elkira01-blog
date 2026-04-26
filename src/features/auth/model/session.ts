@@ -4,6 +4,6 @@ export type SignInPayload = {
 }
 
 export type AdminSession = {
-    username?: string
+    username: string
     signedInAt: string
 }

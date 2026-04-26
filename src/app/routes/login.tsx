@@ -12,7 +12,7 @@ function parseLoginSearch(search: Record<string, unknown>): LoginSearch {
   }
 }
 
-export const Route = createFileRoute('/admin/login')({
+export const Route = createFileRoute('/login')({
   validateSearch: parseLoginSearch,
   beforeLoad: () => {
     if (typeof window === 'undefined') {
