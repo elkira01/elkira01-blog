@@ -13,7 +13,7 @@ import TanStackQueryDevtools from '../devtools/query-devtools'
 import appCss from '../styles/styles.css'
 
 import type { QueryClient } from '@tanstack/react-query'
-import { AppLayout } from '#/widgets/layout/AppLayout'
+import { AppLayout } from '@/widgets/layout/AppLayout'
 
 interface MyRouterContext {
   queryClient: QueryClient
