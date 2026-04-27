@@ -1,5 +1,4 @@
-import { createFileRoute, redirect } from '@tanstack/react-router'
-import { isAdminAuthenticated } from '@/features/auth'
+import { createFileRoute } from '@tanstack/react-router'
 import { AdminLoginPage } from '@/pages/admin-login'
 
 type LoginSearch = {
@@ -17,12 +16,6 @@ export const Route = createFileRoute('/login')({
   beforeLoad: () => {
     if (typeof window === 'undefined') {
       return
-    }
-
-    if (isAdminAuthenticated()) {
-      throw redirect({
-        to: '/admin/posts/new',
-      })
     }
   },
   component: function AdminLoginRoute() {

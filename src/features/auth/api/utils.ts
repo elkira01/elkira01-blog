@@ -13,6 +13,8 @@ export function readSession(): AdminSession | null {
 
   const rawSession = window.localStorage.getItem(ADMIN_SESSION_KEY)
 
+  console.log({rawSession})
+
   if (!rawSession) {
     return null
   }
@@ -34,6 +36,7 @@ export function readSession(): AdminSession | null {
 }
 
 export function getConfiguredCredentials() {
+
   return {
     username: env.VITE_ADMIN_USERNAME,
     password: env.VITE_ADMIN_PASSWORD

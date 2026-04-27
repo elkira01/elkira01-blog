@@ -9,6 +9,7 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 
 import TanStackQueryDevtools from '../devtools/query-devtools'
+import { NotFoundPage } from '@/pages/not-found'
 
 import appCss from '../styles/styles.css?url'
 
@@ -43,6 +44,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
   }),
   component: RootComponent,
   shellComponent: RootDocument,
+  notFoundComponent: NotFoundPage,
 })
 
 function RootComponent() {

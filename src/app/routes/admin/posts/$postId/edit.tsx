@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, notFound } from '@tanstack/react-router'
 import { getPost } from '@/entities/post'
 import { PostEditorPage } from '@/pages/post-editor'
 
@@ -18,11 +18,7 @@ export const Route = createFileRoute('/admin/posts/$postId/edit')({
     const { post } = Route.useLoaderData()
 
     if (!post) {
-      return (
-        <div className="engineer-workspace p-8 text-center text-[var(--engineer-muted)]">
-          Post not found
-        </div>
-      )
+      return notFound()
     }
 
     return <PostEditorPage post={post} />
