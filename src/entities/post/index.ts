@@ -1,2 +1,2 @@
-export type { Post, NewPost } from "./model/types";
-export { getPost, createPost, updatePost } from "./model/api";
+export type { Post, NewPost } from "./model/types.ts";
+export { getPost, createPost, updatePost } from "./api/actions.ts";

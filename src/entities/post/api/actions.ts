@@ -1,27 +1,10 @@
 import { createServerFn } from "@tanstack/react-start";
 import { eq } from "drizzle-orm";
-import { z } from "zod";
 import { db } from "@/shared/db";
-import { posts } from "@/shared/db/schema";
+import { posts } from "@/shared/db/schema.ts";
+import {createPostSchema, getPostSchema, updatePostSchema } from "../model/schemas";
 
-const getPostSchema = z.number();
-const createPostSchema = z.object({
-	title: z.string(),
-	slug: z.string(),
-	excerpt: z.string().optional(),
-	contentMd: z.string(),
-	status: z.enum(["draft", "published"]).default("draft"),
-});
-const updatePostSchema = z.object({
-	id: z.number(),
-	values: z.object({
-		title: z.string().optional(),
-		slug: z.string().optional(),
-		excerpt: z.string().optional(),
-		contentMd: z.string().optional(),
-		status: z.enum(["draft", "published"]).optional(),
-	}),
-});
+
 
 export const getPost = createServerFn({ method: "GET" })
 	.inputValidator(getPostSchema)
