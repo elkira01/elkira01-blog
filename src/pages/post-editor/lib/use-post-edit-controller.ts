@@ -14,6 +14,6 @@ export const usePostEditorController = () => {
 	return {
 		onCreatePost: createMutation.mutateAsync,
 		onUpdatePost: updateMutation.mutateAsync,
-		isPending: createMutation.isPending || updateMutation.isPending,
+		isSaving: createMutation.isPending || updateMutation.isPending,
 	};
 };

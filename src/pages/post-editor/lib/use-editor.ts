@@ -164,7 +164,7 @@ export const useEditor = (post?: Post) => {
 	);
 
 	const saveStateLabel = useMemo(() => {
-		if (controller.isPending) {
+		if (controller.isSaving) {
 			return "Saving changes…";
 		}
 		if (savedAt) {
@@ -174,7 +174,7 @@ export const useEditor = (post?: Post) => {
 			})}`;
 		}
 		return currentPostId ? "Draft loaded" : "New draft";
-	}, [controller.isPending, savedAt, currentPostId]);
+	}, [controller.isSaving, savedAt, currentPostId]);
 
 	const publicationLabel = status === "published" ? "Published" : "Draft";
 
@@ -199,7 +199,7 @@ export const useEditor = (post?: Post) => {
 	return {
 		saveStateLabel,
 		publicationLabel,
-		isSaving: controller.isPending,
+		isSaving: controller.isSaving,
 		handlePublish,
 		handleSaveDraft,
 		formattingButtons,

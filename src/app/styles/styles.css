@@ -374,7 +374,7 @@ pre code {
 	.engineer-topbar {
 		position: static;
 	}
-	n jiphnu\n .engineer-split-shell {
+	.engineer-split-shell {
 		border: 1px solid var(--engineer-border);
 	}
 }
