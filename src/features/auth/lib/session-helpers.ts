@@ -1,9 +1,9 @@
-import { readSession } from "../api/utils.ts"
+import { readSession } from "../api/utils.ts";
 
 export function isAdminAuthenticated() {
-    return readSession() !== null
+	return readSession() !== null;
 }
 
 export function getAdminSession() {
-    return readSession()
+	return readSession();
 }

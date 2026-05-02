@@ -1,1 +1,1 @@
-export const ADMIN_SESSION_KEY = 'engineer.admin.session'
+export const ADMIN_SESSION_KEY = "engineer.admin.session";

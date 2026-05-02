@@ -1,24 +1,22 @@
 export const routePaths = {
-    LOGIN: '/login',
-    LOGOUT: '/logout',
+	LOGIN: "/login",
+	LOGOUT: "/logout",
 
+	// PUBLIC
 
-    // PUBLIC
+	HOME: "/",
+	ABOUT: "/about",
 
-    HOME: '/',
-    ABOUT: '/about',
+	POST_READ: ($slug: string) => `/posts/${$slug}`,
+	POSTS_CATEGORIES: "/posts/categories",
+	CATEGORY_POSTS_LIST: ($slug: string) => `/posts/categories/${$slug}`,
 
-    POST_READ: ($slug: string) => `/posts/${$slug}`,
-    POSTS_CATEGORIES: '/posts/categories',
-    CATEGORY_POSTS_LIST: ($slug: string) => `/posts/categories/${$slug}`,
+	// PRIVATE
 
+	ADMIN: "/admin",
 
-    // PRIVATE
+	POST_EDIT: ($postId: string) => `/admin/posts/${$postId}/edit`,
+	POST_CREATE: "/admin/posts/new",
 
-    ADMIN: '/admin',
-
-    POST_EDIT: ($postId: string) => `/admin/posts/${$postId}/edit`,
-    POST_CREATE: '/admin/posts/new',
-
-    CATEGORY_MANAGEMENT: '/admin/categories',
-}
+	CATEGORY_MANAGEMENT: "/admin/categories",
+};

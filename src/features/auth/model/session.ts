@@ -1,9 +1,9 @@
 export type SignInPayload = {
-    username: string
-    password: string
-}
+	username: string;
+	password: string;
+};
 
 export type AdminSession = {
-    username: string
-    signedInAt: string
-}
+	username: string;
+	signedInAt: string;
+};
