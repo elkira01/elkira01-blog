@@ -33,6 +33,9 @@
 			"correctness": {
 				"useExhaustiveDependencies": "off"
 			}
+		},
+		"domains": {
+			"drizzle": "recommended"
 		}
 	},
 	"javascript": {
