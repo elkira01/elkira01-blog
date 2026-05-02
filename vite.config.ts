@@ -1,27 +1,27 @@
-import { defineConfig } from 'vite'
-import { devtools } from '@tanstack/devtools-vite'
-import tsconfigPaths from 'vite-tsconfig-paths'
-import { nitro } from 'nitro/vite'
-import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import { defineConfig } from "vite";
+import { devtools } from "@tanstack/devtools-vite";
+import tsconfigPaths from "vite-tsconfig-paths";
+import { nitro } from "nitro/vite";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 
-import viteReact from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
+import viteReact from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
 
 const config = defineConfig({
-  plugins: [
-    devtools(),
-    tsconfigPaths({ projects: ['./tsconfig.json'] }),
-    tailwindcss(),
-    tanstackStart({
-      // Pass through router-plugin options
-      router: {
-        routesDirectory: './app/routes',
-        generatedRouteTree: './app/routeTree.gen.ts',
-      },
-    }),
-      nitro(),
-    viteReact(),
-  ],
-})
+	plugins: [
+		devtools(),
+		tsconfigPaths({ projects: ["./tsconfig.json"] }),
+		tailwindcss(),
+		tanstackStart({
+			// Pass through router-plugin options
+			router: {
+				routesDirectory: "./app/routes",
+				generatedRouteTree: "./app/routeTree.gen.ts",
+			},
+		}),
+		nitro(),
+		viteReact(),
+	],
+});
 
-export default config
+export default config;
